@@ -1,3 +1,9 @@
+# Definition for a  binary tree node
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 class TreeNode:
     @staticmethod
     def createTree(lst):
@@ -44,3 +50,31 @@ class TreeNode:
                 break
         return result
 
+
+class Solution:
+    # @param root, a tree node
+    # @return a list of lists of integers
+    def levelOrder(self, root):
+        result = []
+        current, previous = [], []
+        current.append(root)
+        while True:
+            current, previous = previous, current
+            current = []
+            clevel = []
+            for node in previous:
+                clevel.append(node.val)
+                if node.left:
+                    current.append(node.left)
+                if node.right:
+                    current.append(node.right)
+            result.append(clevel)
+            if not current:
+                break
+        return result
+
+lst = [3,9,20,'#','#',15,7]
+root = TreeNode.createTree(lst)
+print root.serialize()
+sol = Solution()
+print sol.levelOrder(root)
