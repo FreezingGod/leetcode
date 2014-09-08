@@ -16,5 +16,6 @@ class Solution:
         return ones
 
 A = [1,2,3,3,3, 4,4,4, 2]
+A = [1100, 1101, 1101, 1101, 102, 102, 102, 103, 103, 103, 1100, 999]
 sol = Solution()
 print sol.singleNumber(A)
